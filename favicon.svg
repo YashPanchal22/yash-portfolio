@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="Yashkumar Panchal monogram">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#93a8ff"/>
+      <stop offset="100%" stop-color="#b79aff"/>
+    </linearGradient>
+  </defs>
+  <rect width="48" height="48" rx="12" fill="#0b0d14"/>
+  <rect x="0.75" y="0.75" width="46.5" height="46.5" rx="11.25" fill="none" stroke="url(#g)" stroke-opacity="0.35" stroke-width="1.5"/>
+  <path d="M15 13.5 L24 24 L33 13.5" fill="none" stroke="url(#g)" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M24 24 L24 34.5" fill="none" stroke="url(#g)" stroke-width="4.2" stroke-linecap="round"/>
+</svg>

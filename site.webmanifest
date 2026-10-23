@@ -1,0 +1,13 @@
+{
+  "name": "Yashkumar M. Panchal — Portfolio",
+  "short_name": "Yashkumar",
+  "description": "B.Sc. Data Science student and full-stack developer in Ahmedabad, India.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#08090e",
+  "theme_color": "#08090e",
+  "icons": [
+    { "src": "./favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "./apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+  ]
+}
