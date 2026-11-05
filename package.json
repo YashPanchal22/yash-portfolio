@@ -2,11 +2,14 @@
   "name": "react-vite-tailwind",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://yashpanchal22.github.io/yash-portfolio",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "build": "vite build && node -e \"import('fs').then(fs => fs.copyFileSync('dist/index.html', 'dist/404.html'))\"",
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist -b gh-pages"
   },
   "dependencies": {
     "@react-three/drei": "^10.7.9",
@@ -26,6 +29,7 @@
     "@types/react-dom": "19.2.3",
     "@types/three": "^0.187.0",
     "@vitejs/plugin-react": "5.1.1",
+    "gh-pages": "^6.3.0",
     "tailwindcss": "4.1.17",
     "typescript": "5.9.3",
     "vite": "7.3.2",
