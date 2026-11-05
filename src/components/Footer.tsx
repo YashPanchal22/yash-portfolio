@@ -1,98 +1,101 @@
-import { Link, useNavigate } from 'react-router-dom'
-import { ArrowUpRight, Mail, MapPin } from 'lucide-react'
-import { profile } from '../data/profile'
-import { navItems } from '../lib/navigation'
-import { GithubMark, LinkedinMark } from './BrandIcons'
+import { ArrowUp, Download } from "lucide-react";
+import { CONTACT, NAV_LINKS, PERSON } from "@/data/portfolio";
+import { GithubIcon, LinkedinIcon } from "./icons";
 
-export function Footer() {
-  const navigate = useNavigate()
-  const year = new Date().getFullYear()
-
+export default function Footer() {
+  const year = new Date().getFullYear();
   return (
-    <footer className="relative border-t border-line bg-bg-elev">
-      <div className="container-page py-12 md:py-16">
-        <div className="grid gap-10 md:grid-cols-[1.6fr_1fr_1fr]">
-          <div>
-            <Link to="/" className="inline-flex items-center gap-3">
-              <span className="grid h-10 w-10 place-items-center rounded-xl border border-line-strong bg-surface2 font-display text-sm font-bold">
-                {profile.initials}
-              </span>
-              <span className="font-display text-base font-semibold">Yashkumar M. Panchal</span>
-            </Link>
-            <p className="lead mt-4 max-w-sm text-sm">
-              B.Sc. Data Science student building full-stack, AI-assisted and data-driven
-              applications. Open to developer and AI/ML internships.
-            </p>
-            <p className="mt-4 inline-flex items-center gap-2 text-sm text-muted">
-              <MapPin className="h-4 w-4" aria-hidden="true" /> {profile.location}
-            </p>
+    <footer className="relative z-10 border-t border-white/10 bg-ink/60 backdrop-blur-sm">
+      <div className="mx-auto grid max-w-7xl gap-10 px-5 py-14 md:grid-cols-3 md:px-8">
+        <div>
+          <div className="flex items-center gap-3">
+            <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-violet-600 text-sm font-black text-white">
+              YP
+            </span>
+            <p className="font-semibold text-white">{PERSON.name}</p>
           </div>
-
-          <nav aria-label="Footer">
-            <h2 className="font-mono text-[11px] uppercase tracking-[0.16em] text-muted">Sections</h2>
-            <ul className="mt-4 space-y-2.5">
-              {navItems.map((item) => (
-                <li key={item.id}>
-                  <button
-                    type="button"
-                    onClick={() => navigate('/', { state: { scrollTo: item.id } })}
-                    className="text-sm text-soft transition-colors hover:text-accent"
-                  >
-                    {item.label}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </nav>
-
-          <div>
-            <h2 className="font-mono text-[11px] uppercase tracking-[0.16em] text-muted">Elsewhere</h2>
-            <ul className="mt-4 space-y-2.5">
-              <li>
-                <a
-                  href={profile.links.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group inline-flex items-center gap-2 text-sm text-soft transition-colors hover:text-accent"
-                >
-                  <GithubMark className="h-4 w-4" aria-hidden="true" /> GitHub
-                  <ArrowUpRight className="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100" aria-hidden="true" />
-                </a>
-              </li>
-              <li>
-                <a
-                  href={profile.links.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group inline-flex items-center gap-2 text-sm text-soft transition-colors hover:text-accent"
-                >
-                  <LinkedinMark className="h-4 w-4" aria-hidden="true" /> LinkedIn
-                  <ArrowUpRight className="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100" aria-hidden="true" />
-                </a>
-              </li>
-              <li>
-                <a
-                  href={profile.links.email}
-                  className="group inline-flex items-center gap-2 text-sm text-soft transition-colors hover:text-accent"
-                >
-                  <Mail className="h-4 w-4" aria-hidden="true" /> Email
-                  <ArrowUpRight className="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100" aria-hidden="true" />
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div className="mt-12 flex flex-col gap-3 border-t border-line pt-6 text-[12.5px] text-muted sm:flex-row sm:items-center sm:justify-between">
-          <p>© {year} Yashkumar M. Panchal. All rights reserved.</p>
-          <p className="font-mono text-[11px]">
-            Built with React · TypeScript · Vite · Tailwind CSS
+          <p className="mt-4 max-w-xs text-sm leading-relaxed text-slate-400">
+            Full-Stack Developer building scalable web applications, AI-powered solutions, and computer vision systems.
           </p>
+          <a
+            href={`${import.meta.env.BASE_URL}${PERSON.resumeFile}`}
+            download={PERSON.resumeFile}
+            className="btn-ghost mt-5"
+          >
+            <Download size={15} aria-hidden="true" />
+            Download Resume (PDF)
+          </a>
         </div>
-        <p className="mt-2 font-mono text-[11px] text-muted">
-          All repository and deployment links on this site were checked on 23 Oct 2026.
-        </p>
+
+        <nav aria-label="Footer">
+          <h2 className="font-mono text-xs uppercase tracking-[0.2em] text-slate-400">Navigate</h2>
+          <ul className="mt-4 grid grid-cols-2 gap-x-6 gap-y-2.5 text-sm">
+            <li>
+              <a href="#top" className="text-slate-300 hover:text-cyan-300">
+                Home
+              </a>
+            </li>
+            {NAV_LINKS.map((link) => (
+              <li key={link.id}>
+                <a href={`#${link.id}`} className="text-slate-300 hover:text-cyan-300">
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <div>
+          <h2 className="font-mono text-xs uppercase tracking-[0.2em] text-slate-400">Connect</h2>
+          <ul className="mt-4 space-y-2.5 text-sm">
+            <li>
+              <a href={`mailto:${CONTACT.email}`} className="text-slate-300 hover:text-cyan-300">
+                {CONTACT.email}
+              </a>
+            </li>
+            <li>
+              <a href={`tel:${CONTACT.phoneHref}`} className="text-slate-300 hover:text-cyan-300">
+                {CONTACT.phone}
+              </a>
+            </li>
+          </ul>
+          <div className="mt-5 flex gap-3">
+            <a
+              href={CONTACT.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn profile (opens in a new tab)"
+              className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 text-slate-300 transition-colors hover:border-cyan-300/50 hover:text-cyan-300"
+            >
+              <LinkedinIcon width={17} height={17} />
+            </a>
+            <a
+              href={CONTACT.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub profile (opens in a new tab)"
+              className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 text-slate-300 transition-colors hover:border-cyan-300/50 hover:text-cyan-300"
+            >
+              <GithubIcon width={17} height={17} />
+            </a>
+            <a
+              href="#top"
+              aria-label="Back to top"
+              className="ml-auto flex h-10 items-center gap-2 rounded-xl border border-white/10 px-3 text-xs font-medium text-slate-300 transition-colors hover:border-cyan-300/50 hover:text-cyan-300"
+            >
+              <ArrowUp size={15} aria-hidden="true" />
+              Top
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div className="border-t border-white/5">
+        <div className="mx-auto flex max-w-7xl flex-col gap-2 px-5 py-6 text-xs text-slate-500 md:flex-row md:items-center md:justify-between md:px-8">
+          <p>© {year} {PERSON.name}. All rights reserved.</p>
+          <p>Designed and built with React, TypeScript, Vite, Tailwind CSS, and React Three Fiber.</p>
+        </div>
       </div>
     </footer>
-  )
+  );
 }
